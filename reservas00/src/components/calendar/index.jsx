@@ -26,6 +26,14 @@ const Calendar = () => {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.calendarReducer);
   const [stateDayMonth, setStateDayMonth] = useState([]);
+  const [stateDayMonth00, setStateDayMonth00] = useState([]);
+  const [bookings, setBookings] = useState([
+    {
+      day: 12,
+      month: 1,
+      year: 2023,
+    },
+  ]);
 
   const ComboBoxCalendar = ({
     hookInputSelection,
@@ -88,19 +96,31 @@ const Calendar = () => {
     console.log(numDay);
     while (n < numDay) {
       n++;
-      arrayDay.push([n]);
+      arrayDay.push( false );
     }
-    setStateDayMonth(arrayDay);
+
+    setStateDayMonth([...arrayDay]);
   }, [selector.valueInput01, selector.valueInput00]);
 
   return (
     <div className="divContainerCalendar00">
       <div className="divContainerCalendar01 flexColumn">
-        <h1>calendario</h1>
+        <h1>calendario Reservas en proceso</h1>
 
         <div className="flexRow">
           <div className="divContainerCalendar04">
             <h1>reservas</h1>
+            <div className="flexColumn">
+              {bookings.map((list) => {
+                return (
+                  <div className="flexRow">
+                    <h3>{list.day}</h3>
+                    <h3>{list.month}</h3>
+                    <h3>{list.year}</h3>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="divContainerCalendar02 flexColumn">
             <div className="flexRow">
@@ -127,8 +147,35 @@ const Calendar = () => {
             </div>
 
             <div className="divContainerCalendar03">
-              {stateDayMonth.map((list) => {
-                return <h3>{list}</h3>;
+              {stateDayMonth.map((listDayMonth, index) => {
+                let numday = index + 1;
+
+/* 
+                setStateDayMonth(stateDayMonth)  */
+
+
+              /*   console.log(listDayMonth[numday]); */
+            /*     setStateDayMonth({...stateDayMonth, numday:{state:true}}); */
+                console.log(stateDayMonth[1])
+        /*         setStateDayMonth([...stateDayMonth]) */
+                /*        bookings.forEach((listBookings) => {
+                  if (
+                    selector.valueInput01 === listBookings.year &&
+                    listBookings.day == 14
+                  ) {
+                    setStateDayMonth({...stateDayMonth, numday:{state:true}});
+                  }
+                }); */
+
+                return (
+                  <h3
+                    style={
+                      listDayMonth[numday] ? { backgroundColor: "red" } : {}
+                    }
+                  >
+                    {numday}
+                  </h3>
+                );
               })}
             </div>
           </div>
