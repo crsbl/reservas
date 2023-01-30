@@ -3,6 +3,7 @@ const estadoInicial = {
   valueInput01: 2023,
   stateInp00: false,
   stateInp01: false,
+  arrayDays: [],
 };
 
 function rootReducer(state = estadoInicial, accion) {
@@ -27,6 +28,11 @@ function rootReducer(state = estadoInicial, accion) {
       return {
         ...state,
         stateInp01: accion.payload,
+      };
+    case "CHANGE_STATE_ARRAYDAYS":
+      return {
+        ...state,
+        arrayDays: [...state.arrayDays, accion.payload],
       };
     default:
       return state;

@@ -21,16 +21,30 @@ const Calendar = () => {
       "Diciembre",
     ],
   ];
-  const valueYears = ["2023", "2024", "2025", "2026"];
+  const valueYears = [2023, 2024, 2025, 2026];
 
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.calendarReducer);
   const [stateDayMonth, setStateDayMonth] = useState([]);
-  const [stateDayMonth00, setStateDayMonth00] = useState([]);
   const [bookings, setBookings] = useState([
     {
       day: 12,
       month: 1,
+      year: 2023,
+    },
+    {
+      day: 1,
+      month: 1,
+      year: 2023,
+    },
+    {
+      day: 25,
+      month: 1,
+      year: 2023,
+    },
+    {
+      day: 10,
+      month: 3,
       year: 2023,
     },
   ]);
@@ -96,10 +110,15 @@ const Calendar = () => {
     console.log(numDay);
     while (n < numDay) {
       n++;
-      arrayDay.push( false );
-    }
+      arrayDay.push([false]);
 
-    setStateDayMonth([...arrayDay]);
+      /*      dispatch({
+        type: "",
+        payload: { [n]: false },
+      }); */
+    }
+    setStateDayMonth(arrayDay);
+    console.log(stateDayMonth);
   }, [selector.valueInput01, selector.valueInput00]);
 
   return (
@@ -111,6 +130,11 @@ const Calendar = () => {
           <div className="divContainerCalendar04">
             <h1>reservas</h1>
             <div className="flexColumn">
+            <div className="flexRow">
+                    <h3>Dia</h3>
+                    <h3>Mes</h3>
+                    <h3>Año</h3>
+                  </div>
               {bookings.map((list) => {
                 return (
                   <div className="flexRow">
@@ -148,32 +172,21 @@ const Calendar = () => {
 
             <div className="divContainerCalendar03">
               {stateDayMonth.map((listDayMonth, index) => {
-                let numday = index + 1;
-
-/* 
-                setStateDayMonth(stateDayMonth)  */
-
-
-              /*   console.log(listDayMonth[numday]); */
-            /*     setStateDayMonth({...stateDayMonth, numday:{state:true}}); */
-                console.log(stateDayMonth[1])
-        /*         setStateDayMonth([...stateDayMonth]) */
-                /*        bookings.forEach((listBookings) => {
+                let state = false;
+                let numDay = index + 1;
+                bookings.map((listBookings) => {
                   if (
+                    numDay === listBookings.day &&
                     selector.valueInput01 === listBookings.year &&
-                    listBookings.day == 14
+                    selector.valueInput00 === listBookings.month
                   ) {
-                    setStateDayMonth({...stateDayMonth, numday:{state:true}});
+                    state = true;
                   }
-                }); */
+                });
 
                 return (
-                  <h3
-                    style={
-                      listDayMonth[numday] ? { backgroundColor: "red" } : {}
-                    }
-                  >
-                    {numday}
+                  <h3 style={state ? { backgroundColor: "red" } : {}}>
+                    {numDay}
                   </h3>
                 );
               })}
