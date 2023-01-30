@@ -1,9 +1,13 @@
 const estadoInicial = {
   valueInput00: 1,
   valueInput01: 2023,
+  valueInput02: 30,
+  valueInput03: new Date().getMonth() +1,
+  valueInput04: new Date().getFullYear(),
   stateInp00: false,
   stateInp01: false,
-  arrayDays: [],
+  stateInp03: false,
+  stateInp04: false,
 };
 
 function rootReducer(state = estadoInicial, accion) {
@@ -19,6 +23,21 @@ function rootReducer(state = estadoInicial, accion) {
         ...state,
         valueInput01: accion.payload,
       };
+    case "CHANGE_INPUT02":
+      return {
+        ...state,
+        valueInput02: accion.payload,
+      };
+    case "CHANGE_INPUT03":
+      return {
+        ...state,
+        valueInput03: accion.payload,
+      };
+    case "CHANGE_INPUT04":
+      return {
+        ...state,
+        valueInput04: accion.payload,
+      };
     case "CHANGE_STATE_INPUT00":
       return {
         ...state,
@@ -29,11 +48,16 @@ function rootReducer(state = estadoInicial, accion) {
         ...state,
         stateInp01: accion.payload,
       };
-    case "CHANGE_STATE_ARRAYDAYS":
-      return {
-        ...state,
-        arrayDays: [...state.arrayDays, accion.payload],
-      };
+      case "CHANGE_STATE_INPUT03":
+        return {
+          ...state,
+          stateInp03: accion.payload,
+        };
+      case "CHANGE_STATE_INPUT04":
+        return {
+          ...state,
+          stateInp04: accion.payload,
+        };
     default:
       return state;
   }

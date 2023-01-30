@@ -1,13 +1,13 @@
 .divContainerCalendar00 {
 }
 
-.divContainerCalendar01{
-    gap: 1rem;
-    align-items: center;
+.divContainerCalendar01 {
+  gap: 1rem;
+  align-items: center;
 }
 
 .divContainerCalendar01 > h1 {
-    padding: .5rem 1rem .5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   color: rgb(96, 124, 177);
   font-size: 3rem;
   background-color: rgb(163, 195, 221);
@@ -42,10 +42,25 @@
   color: rgb(62, 91, 121);
 }
 
+.divContainerCalendar07 > div > div> input{
+  cursor: pointer;
+  width: 5rem;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgb(199, 218, 235);
+  color: rgb(77, 113, 148);
+  border-left: solid 0.1rem rgb(77, 113, 148);
+  border-right: solid 0.1rem rgb(77, 113, 148);
+  border-top: solid 0.1rem rgb(77, 113, 148);
+  
+}
+
+
 .divContainerCalendarCombobox00 > input {
   cursor: pointer;
   width: 5rem;
-  padding: .5rem 0 .5rem 0;
+  padding: 0.5rem 0 0.5rem 0;
   font-size: 1.5rem;
   text-align: center;
   background-color: rgb(199, 218, 235);
@@ -56,8 +71,8 @@
   position: relative;
 }
 
-.divContainerCalendarCombobox00 > input:hover{
-    background-color: rgb(195, 206, 216);
+.divContainerCalendarCombobox00 > input:hover {
+  background-color: rgb(195, 206, 216);
 }
 
 /* .divContainerHeader01 > h1:nth-child(1)::after { */
@@ -83,16 +98,68 @@ font-size: 1rem;
   background-color: rgb(237, 240, 229);
 }
 
-.divContainerCalendar02 {
-  align-items: center;
+.divContainerCalendar10{
+ gap: .5rem;
+
 }
 
-.divContainerCalendar02 > div > div > h3 {
-    color:rgb(71, 108, 126);
-    font-size: 1.7rem;
-    background-color: rgb(165, 211, 233);
-    text-align: center;
+.divContainerCalendar11{
+  gap: .5rem;
 }
+
+.divContainerCalendar08{
+  background-color: rgb(106, 175, 152);
+  justify-content: flex-end;
+}
+
+.divContainerCalendar08 > h3{
+color: white;
+font-size: 1.5rem;
+text-align: center;
+}
+
+.divContainerCalendar07{
+  background-color: rgb(106, 175, 152);
+  justify-content: flex-end;
+}
+
+.divContainerCalendar07 > h3{
+color: white;
+font-size: 1.5rem;
+text-align: center;
+}
+
+.divContainerCalendar09{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+
+}
+
+.divContainerCalendar09 > button{
+  color:white;
+  font-size: 1.5rem;
+  background-color: cornflowerblue;
+  padding: .5rem;
+
+}
+
+
+.divContainerCalendar08 > div > div > h3 {
+  color: rgb(71, 108, 126);
+  font-size: 1.7rem;
+  background-color: rgb(165, 211, 233);
+  text-align: center;
+}
+
+.divContainerCalendar07 > div > div > h4 {
+  color: rgb(71, 108, 126);
+  font-size: 1.7rem;
+  background-color: rgb(151, 181, 194);
+  text-align: center;
+}
+
 
 .divContainerCalendar03 {
   padding: 0.5rem;
@@ -112,7 +179,7 @@ font-size: 1rem;
   font-weight: 600;
 }
 
-.divContainerCalendar05 h3{
+.divContainerCalendar05 h3 {
   width: 4rem;
   text-align: center;
   background-color: rgb(95, 160, 138);
@@ -120,17 +187,16 @@ font-size: 1rem;
   font-size: 1.5rem;
 }
 
-.divContainerCalendar06 h3{
+.divContainerCalendar06 h3 {
   width: 4rem;
   text-align: center;
   background-color: rgb(97, 154, 156);
   color: white;
   font-size: 1.5rem;
-
 }
 
-.divContainerCalendar04 > h1{
-color: rgb(217, 233, 233);
-background-color: rgb(110, 173, 138);
-text-align: center;
+.divContainerCalendar04 > h1 {
+  color: rgb(217, 233, 233);
+  background-color: rgb(110, 173, 138);
+  text-align: center;
 }

@@ -107,18 +107,11 @@ const Calendar = () => {
     ).getDate();
     let n = 0;
     let arrayDay = [];
-    console.log(numDay);
     while (n < numDay) {
       n++;
-      arrayDay.push([false]);
-
-      /*      dispatch({
-        type: "",
-        payload: { [n]: false },
-      }); */
+      arrayDay.push(n);
     }
     setStateDayMonth(arrayDay);
-    console.log(stateDayMonth);
   }, [selector.valueInput01, selector.valueInput00]);
 
   return (
@@ -126,15 +119,15 @@ const Calendar = () => {
       <div className="divContainerCalendar01 flexColumn">
         <h1>calendario Reservas en proceso</h1>
 
-        <div className="flexRow">
+        <div className="flexRow divContainerCalendar11">
           <div className="divContainerCalendar04">
             <h1>reservas</h1>
             <div className="flexColumn">
-            <div className="divContainerCalendar05 flexRow">
-                    <h3>Dia</h3>
-                    <h3>Mes</h3>
-                    <h3>Año</h3>
-                  </div>
+              <div className="divContainerCalendar05 flexRow">
+                <h3>Dia</h3>
+                <h3>Mes</h3>
+                <h3>Año</h3>
+              </div>
               {bookings.map((list) => {
                 return (
                   <div className="divContainerCalendar06 flexRow">
@@ -147,26 +140,72 @@ const Calendar = () => {
             </div>
           </div>
           <div className="divContainerCalendar02 flexColumn">
-            <div className="flexRow">
-              <div>
-                <h3>mes</h3>
-                <ComboBoxCalendar
-                  hookInputSelection={selector.valueInput00}
-                  hookInput="CHANGE_INPUT00"
-                  hookstyleComboBoxSelection={selector.stateInp00}
-                  hookstyleComboBox="CHANGE_STATE_INPUT00"
-                  arrayData={valueMonth[0]}
-                />
+            <div className="flexRow divContainerCalendar10">
+              <div className="flexColumn divContainerCalendar08">
+                <h3>Buscar</h3>
+                <div className="flexRow">
+                  <div>
+                    <h3>mes</h3>
+                    <ComboBoxCalendar
+                      hookInputSelection={selector.valueInput00}
+                      hookInput="CHANGE_INPUT00"
+                      hookstyleComboBoxSelection={selector.stateInp00}
+                      hookstyleComboBox="CHANGE_STATE_INPUT00"
+                      arrayData={valueMonth[0]}
+                    />
+                  </div>
+                  <div>
+                    <h3>año</h3>
+                    <ComboBoxCalendar
+                      hookInputSelection={selector.valueInput01}
+                      hookInput="CHANGE_INPUT01"
+                      hookstyleComboBoxSelection={selector.stateInp01}
+                      hookstyleComboBox="CHANGE_STATE_INPUT01"
+                      arrayData={valueYears}
+                    />
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3>año</h3>
-                <ComboBoxCalendar
-                  hookInputSelection={selector.valueInput01}
-                  hookInput="CHANGE_INPUT01"
-                  hookstyleComboBoxSelection={selector.stateInp01}
-                  hookstyleComboBox="CHANGE_STATE_INPUT01"
-                  arrayData={valueYears}
-                />
+              <div className="divContainerCalendar07 flexColumn">
+                <h3>Reservar</h3>
+                <div className="flexRow">
+                  <div className="flexColumn">
+                    <h4>dia</h4>
+                    <input
+                      onChange={(e) => {
+                        dispatch({
+                          type: "CHANGE_INPUT02",
+                          payload: e.currentTarget.value,
+                        });
+                      }}
+                      value={selector.valueInput02}
+                    ></input>
+                  </div>
+                  <div className="flexColumn">
+                    <h4>mes</h4>
+
+                    <ComboBoxCalendar
+                      hookInputSelection={selector.valueInput03}
+                      hookInput="CHANGE_INPUT03"
+                      hookstyleComboBoxSelection={selector.stateInp03}
+                      hookstyleComboBox="CHANGE_STATE_INPUT03"
+                      arrayData={valueMonth[0]}
+                    />
+                  </div>
+                  <div className="flexColumn">
+                    <h4>año</h4>
+                    <ComboBoxCalendar
+                      hookInputSelection={selector.valueInput04}
+                      hookInput="CHANGE_INPUT04"
+                      hookstyleComboBoxSelection={selector.stateInp04}
+                      hookstyleComboBox="CHANGE_STATE_INPUT04"
+                      arrayData={valueYears}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="divContainerCalendar09">
+                <button>Reservar</button>
               </div>
             </div>
 
@@ -185,7 +224,11 @@ const Calendar = () => {
                 });
 
                 return (
-                  <h3 style={state ? { backgroundColor: "rgb(199, 179, 67)" } : {}}>
+                  <h3
+                    style={
+                      state ? { backgroundColor: "rgb(199, 179, 67)" } : {}
+                    }
+                  >
                     {numDay}
                   </h3>
                 );
