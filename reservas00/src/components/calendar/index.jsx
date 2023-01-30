@@ -130,14 +130,14 @@ const Calendar = () => {
           <div className="divContainerCalendar04">
             <h1>reservas</h1>
             <div className="flexColumn">
-            <div className="flexRow">
+            <div className="divContainerCalendar05 flexRow">
                     <h3>Dia</h3>
                     <h3>Mes</h3>
                     <h3>Año</h3>
                   </div>
               {bookings.map((list) => {
                 return (
-                  <div className="flexRow">
+                  <div className="divContainerCalendar06 flexRow">
                     <h3>{list.day}</h3>
                     <h3>{list.month}</h3>
                     <h3>{list.year}</h3>
@@ -185,7 +185,7 @@ const Calendar = () => {
                 });
 
                 return (
-                  <h3 style={state ? { backgroundColor: "red" } : {}}>
+                  <h3 style={state ? { backgroundColor: "rgb(199, 179, 67)" } : {}}>
                     {numDay}
                   </h3>
                 );
