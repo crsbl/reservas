@@ -177,7 +177,15 @@ text-align: center;
   color: rgb(79, 135, 161);
   font-size: 1.5rem;
   font-weight: 600;
+  transition: .3s;
 }
+
+.divContainerCalendar03 > h3:hover {
+ background-color: rgb(91, 161, 189);
+  color: rgb(253, 253, 253);
+ 
+}
+
 
 .divContainerCalendar05 h3 {
   width: 4rem;
@@ -186,17 +194,42 @@ text-align: center;
   color: white;
   font-size: 1.5rem;
 }
-
-.divContainerCalendar06 h3 {
+.divContainerCalendar05 h3:nth-child(4) {
+  width: 7rem;
+  text-align: center;
+  background-color: rgb(95, 160, 138);
+  color: white;
+  font-size: 1.5rem;
+}
+.divContainerCalendar06 > h3 {
   width: 4rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   background-color: rgb(97, 154, 156);
   color: white;
   font-size: 1.5rem;
 }
 
+.divContainerCalendar12 > button{
+  color:white;
+  font-size: 1.2rem;
+  background-color: cornflowerblue;
+  padding: .5rem;
+ 
+}
+
 .divContainerCalendar04 > h1 {
   color: rgb(217, 233, 233);
   background-color: rgb(110, 173, 138);
   text-align: center;
+}
+
+.divContainerCalendar12{
+  width: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

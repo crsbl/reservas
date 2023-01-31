@@ -112,13 +112,28 @@ const Calendar = () => {
                 <h3>Dia</h3>
                 <h3>Mes</h3>
                 <h3>Año</h3>
+                <h3>Acciones</h3>
               </div>
-              {bookings.map((list) => {
+              {bookings.map((list, index) => {
                 return (
                   <div className="divContainerCalendar06 flexRow">
                     <h3>{list.day}</h3>
                     <h3>{list.month}</h3>
                     <h3>{list.year}</h3>
+                    <div className="divContainerCalendar12">
+                      <button
+                        onClick={() => {
+                          let indexResult = index;
+                          setBookings(
+                            bookings.filter(
+                              (list, index) => index !== indexResult
+                            )
+                          );
+                        }}
+                      >
+                        Eliminar
+                      </button>
+                    </div>
                   </div>
                 );
               })}
@@ -203,20 +218,19 @@ const Calendar = () => {
                         stado = false;
                       }
                     });
-if(stado === true){
-  setBookings([
-    ...bookings,
-    {
-      day: parseInt(selector.valueInput02),
-      month: parseInt(selector.valueInput03),
-      year: parseInt(selector.valueInput04),
-    },
-  ]);
- alert("reservado")
-}else{
-  alert("reserva en uso")
-}
-                  
+                    if (stado === true) {
+                      setBookings([
+                        ...bookings,
+                        {
+                          day: parseInt(selector.valueInput02),
+                          month: parseInt(selector.valueInput03),
+                          year: parseInt(selector.valueInput04),
+                        },
+                      ]);
+                      alert("reservado");
+                    } else {
+                      alert("reserva en uso");
+                    }
                   }}
                 >
                   Reservar
@@ -239,21 +253,22 @@ if(stado === true){
                 });
 
                 return (
-                  <h3 onClick={()=>{
-                    dispatch({
-                      type: "CHANGE_INPUT02",
-                      payload: numDay,
-                    });
-                    dispatch({
-                      type: "CHANGE_INPUT03",
-                      payload: selector.valueInput00,
-                    });
-                   
-                    dispatch({
-                      type: "CHANGE_INPUT04",
-                      payload: selector.valueInput01,
-                    }); 
-                  }}
+                  <h3
+                    onClick={() => {
+                      dispatch({
+                        type: "CHANGE_INPUT02",
+                        payload: numDay,
+                      });
+                      dispatch({
+                        type: "CHANGE_INPUT03",
+                        payload: selector.valueInput00,
+                      });
+
+                      dispatch({
+                        type: "CHANGE_INPUT04",
+                        payload: selector.valueInput01,
+                      });
+                    }}
                     style={
                       state ? { backgroundColor: "rgb(199, 179, 67)" } : {}
                     }
