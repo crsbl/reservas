@@ -239,7 +239,21 @@ if(stado === true){
                 });
 
                 return (
-                  <h3
+                  <h3 onClick={()=>{
+                    dispatch({
+                      type: "CHANGE_INPUT02",
+                      payload: numDay,
+                    });
+                    dispatch({
+                      type: "CHANGE_INPUT03",
+                      payload: selector.valueInput00,
+                    });
+                   
+                    dispatch({
+                      type: "CHANGE_INPUT04",
+                      payload: selector.valueInput01,
+                    }); 
+                  }}
                     style={
                       state ? { backgroundColor: "rgb(199, 179, 67)" } : {}
                     }
