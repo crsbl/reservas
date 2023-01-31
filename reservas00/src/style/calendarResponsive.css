@@ -1,0 +1,21 @@
+@media only screen and (max-width: 750px) {
+   .divContainerCalendar11{
+    flex-flow: Column nowrap;
+   }
+
+.divContainerCalendar04 > div{
+  
+    align-items: center;
+}
+
+.divContainerCalendar03{
+width: 100vw;
+}
+.divContainerCalendar02 {
+    width: 100vw;  
+}
+.divContainerCalendar10{
+    width: 100vw;    
+}
+  }
+  

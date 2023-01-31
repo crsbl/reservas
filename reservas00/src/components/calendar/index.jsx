@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../style/calendar.css";
+import "../../style/calendarResponsive.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -31,6 +32,14 @@ const Calendar = () => {
       day: 12,
       month: 1,
       year: 2023,
+    }, {
+      day: 1,
+      month: 1,
+      year: 2023,
+    }, {
+      day: 22,
+      month: 1,
+      year: 2023,
     },
   ]);
 
@@ -40,9 +49,10 @@ const Calendar = () => {
     hookstyleComboBoxSelection,
     hookstyleComboBox,
     arrayData,
+    classSelection
   }) => {
     return (
-      <div className="divContainerCalendarCombobox00">
+      <div className={classSelection}>
         <input
           onClick={() => {
             dispatch({
@@ -114,6 +124,7 @@ const Calendar = () => {
                 <h3>Año</h3>
                 <h3>Acciones</h3>
               </div>
+              <div className="divContainerCalendar13 flexColumn">
               {bookings.map((list, index) => {
                 return (
                   <div className="divContainerCalendar06 flexRow">
@@ -136,7 +147,7 @@ const Calendar = () => {
                     </div>
                   </div>
                 );
-              })}
+              })}</div>
             </div>
           </div>
           <div className="divContainerCalendar02 flexColumn">
@@ -152,6 +163,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp00}
                       hookstyleComboBox="CHANGE_STATE_INPUT00"
                       arrayData={valueMonth[0]}
+                      classSelection ="divContainerCalendarCombobox00"
                     />
                   </div>
                   <div>
@@ -162,6 +174,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp01}
                       hookstyleComboBox="CHANGE_STATE_INPUT01"
                       arrayData={valueYears}
+                      classSelection ="divContainerCalendarCombobox00"
                     />
                   </div>
                 </div>
@@ -190,6 +203,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp03}
                       hookstyleComboBox="CHANGE_STATE_INPUT03"
                       arrayData={valueMonth[0]}
+                      classSelection ="divContainerCalendarCombobox02"
                     />
                   </div>
                   <div className="flexColumn">
@@ -200,6 +214,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp04}
                       hookstyleComboBox="CHANGE_STATE_INPUT04"
                       arrayData={valueYears}
+                      classSelection ="divContainerCalendarCombobox02"
                     />
                   </div>
                 </div>
@@ -270,7 +285,7 @@ const Calendar = () => {
                       });
                     }}
                     style={
-                      state ? { backgroundColor: "rgb(199, 179, 67)" } : {}
+                      state ? { backgroundColor: "rgb(116, 140, 177)", color:"white" } : {}
                     }
                   >
                     {numDay}
