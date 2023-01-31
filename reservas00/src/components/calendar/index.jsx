@@ -32,21 +32,6 @@ const Calendar = () => {
       month: 1,
       year: 2023,
     },
-    {
-      day: 1,
-      month: 1,
-      year: 2023,
-    },
-    {
-      day: 25,
-      month: 1,
-      year: 2023,
-    },
-    {
-      day: 10,
-      month: 3,
-      year: 2023,
-    },
   ]);
 
   const ComboBoxCalendar = ({
@@ -205,7 +190,37 @@ const Calendar = () => {
                 </div>
               </div>
               <div className="divContainerCalendar09">
-                <button>Reservar</button>
+                <button
+                  onClick={() => {
+                    let stado = true;
+                    bookings.map((listBookings) => {
+                      if (
+                        listBookings.day === parseInt(selector.valueInput02) &&
+                        listBookings.month ===
+                          parseInt(selector.valueInput03) &&
+                        listBookings.year === parseInt(selector.valueInput04)
+                      ) {
+                        stado = false;
+                      }
+                    });
+if(stado === true){
+  setBookings([
+    ...bookings,
+    {
+      day: parseInt(selector.valueInput02),
+      month: parseInt(selector.valueInput03),
+      year: parseInt(selector.valueInput04),
+    },
+  ]);
+ alert("reservado")
+}else{
+  alert("reserva en uso")
+}
+                  
+                  }}
+                >
+                  Reservar
+                </button>
               </div>
             </div>
 
