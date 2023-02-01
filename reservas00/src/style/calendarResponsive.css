@@ -9,13 +9,15 @@
 }
 
 .divContainerCalendar03{
-width: 100vw;
+width: 80vw;
 }
 .divContainerCalendar02 {
-    width: 100vw;  
+ align-items: center;
 }
 .divContainerCalendar10{
-    width: 100vw;    
+  flex-flow: row wrap;
+  justify-content: center;
+ 
 }
   }
   
