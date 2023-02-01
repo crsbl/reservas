@@ -4,12 +4,11 @@
    }
 
 .divContainerCalendar04 > div{
-  
     align-items: center;
 }
 
 .divContainerCalendar03{
-width: 80vw;
+width: 95vw;
 }
 .divContainerCalendar02 {
  align-items: center;
@@ -20,7 +19,14 @@ width: 80vw;
  
 }
 .divContainerCalendar13 {
-    width: 80vw;
+
+}
+.divContainerCalendar04{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
 }
 
   }

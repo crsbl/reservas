@@ -285,7 +285,7 @@ const Calendar = () => {
                       });
                     }}
                     style={
-                      state ? { backgroundColor: "rgb(116, 140, 177)", color:"white" } : {}
+                      state ? { backgroundColor: " rgb(91, 146, 168)", color:"white" } : {}
                     }
                   >
                     {numDay}
