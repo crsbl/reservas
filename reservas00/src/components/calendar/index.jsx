@@ -156,7 +156,7 @@ const Calendar = () => {
                 <h3>Buscar</h3>
                 <div className="flexRow">
                   <div>
-                    <h3>mes</h3>
+                    <h3>M</h3>
                     <ComboBoxCalendar
                       hookInputSelection={selector.valueInput00}
                       hookInput="CHANGE_INPUT00"
@@ -167,7 +167,7 @@ const Calendar = () => {
                     />
                   </div>
                   <div>
-                    <h3>año</h3>
+                    <h3>A</h3>
                     <ComboBoxCalendar
                       hookInputSelection={selector.valueInput01}
                       hookInput="CHANGE_INPUT01"
@@ -183,7 +183,7 @@ const Calendar = () => {
                 <h3>Reservar</h3>
                 <div className="flexRow">
                   <div className="flexColumn">
-                    <h4>dia</h4>
+                    <h4>D</h4>
                     <input
                       onChange={(e) => {
                         dispatch({
@@ -195,7 +195,7 @@ const Calendar = () => {
                     ></input>
                   </div>
                   <div className="flexColumn">
-                    <h4>mes</h4>
+                    <h4>M</h4>
 
                     <ComboBoxCalendar
                       hookInputSelection={selector.valueInput03}
@@ -207,7 +207,7 @@ const Calendar = () => {
                     />
                   </div>
                   <div className="flexColumn">
-                    <h4>año</h4>
+                    <h4>A</h4>
                     <ComboBoxCalendar
                       hookInputSelection={selector.valueInput04}
                       hookInput="CHANGE_INPUT04"
