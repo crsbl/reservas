@@ -254,6 +254,13 @@ const Calendar = () => {
             </div>
 
             <div className="divContainerCalendar03">
+              <h3>L</h3>
+              <h3>M</h3>
+              <h3>M</h3>
+              <h3>J</h3>
+              <h3>V</h3>
+              <h3>S</h3>
+              <h3>D</h3>
               {stateDayMonth.map((listDayMonth, index) => {
                 let state = false;
                 let numDay = index + 1;
