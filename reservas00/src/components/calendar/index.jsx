@@ -30,17 +30,17 @@ const Calendar = () => {
   const [bookings, setBookings] = useState([
     {
       day: 12,
-      month: 1,
+      month: 2,
       year: 2023,
     },
     {
-      day: 1,
+      day: 2,
       month: 1,
       year: 2023,
     },
     {
       day: 22,
-      month: 1,
+      month: 2,
       year: 2023,
     },
   ]);

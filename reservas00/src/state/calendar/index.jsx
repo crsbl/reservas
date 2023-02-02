@@ -1,10 +1,9 @@
 const estadoInicial = {
-  valueInput00: 1,
+  valueInput00: new Date().getMonth()+ 1,
   valueInput01: 2023,
   valueInput02: 30,
   valueInput03: new Date().getMonth() + 1,
   valueInput04: new Date().getFullYear(),
-  valuePosition00: 0,
   stateInp00: false,
   stateInp01: false,
   stateInp03: false,
@@ -38,11 +37,6 @@ function rootReducer(state = estadoInicial, accion) {
       return {
         ...state,
         valueInput04: accion.payload,
-      };
-      case "CHANGE_VALUEPOSITION00":
-      return {
-        ...state,
-        valuePosition00: accion.payload,
       };
     case "CHANGE_STATE_INPUT00":
       return {
