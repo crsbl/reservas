@@ -32,16 +32,32 @@ const Calendar = () => {
       day: 12,
       month: 1,
       year: 2023,
-    }, {
+    },
+    {
       day: 1,
       month: 1,
       year: 2023,
-    }, {
+    },
+    {
       day: 22,
       month: 1,
       year: 2023,
     },
   ]);
+
+  let dayStartMonth = 0;
+
+  dayStartMonth = new Date(
+    selector.valueInput01,
+    selector.valueInput00 - 1,
+    1
+  ).getDay();
+
+  if (dayStartMonth === 0) {
+    dayStartMonth = 6;
+  } else {
+    dayStartMonth = dayStartMonth - 1;
+  }
 
   const ComboBoxCalendar = ({
     hookInputSelection,
@@ -49,7 +65,7 @@ const Calendar = () => {
     hookstyleComboBoxSelection,
     hookstyleComboBox,
     arrayData,
-    classSelection
+    classSelection,
   }) => {
     return (
       <div className={classSelection}>
@@ -100,13 +116,41 @@ const Calendar = () => {
       selector.valueInput00,
       0
     ).getDate();
+
+    /*     dispatch({
+      type: "CHANGE_VALUEPOSITION00",
+      payload: new Date(
+        selector.valueInput01,
+        selector.valueInput00 - 1,
+        1
+      ).getDay(),
+    });
+   */
+
+    /*     if (selector.valuePosition00 === 0) {
+      dispatch({
+        type: "CHANGE_VALUEPOSITION00",
+        payload: 6,
+      });
+    } else {
+      dispatch({
+        type: "CHANGE_VALUEPOSITION00",
+        payload: selector.valuePosition00 -1,
+      });
+    }
+ */
+    let arrayFinal = [];
     let n = 0;
     let arrayDay = [];
     while (n < numDay) {
       n++;
       arrayDay.push(n);
     }
-    setStateDayMonth(arrayDay);
+
+    console.log(dayStartMonth + "wwwwww");
+    arrayFinal = [...new Array(dayStartMonth), ...arrayDay];
+
+    setStateDayMonth(arrayFinal);
   }, [selector.valueInput01, selector.valueInput00]);
 
   return (
@@ -125,29 +169,30 @@ const Calendar = () => {
                 <h3>Acciones</h3>
               </div>
               <div className="divContainerCalendar13 flexColumn">
-              {bookings.map((list, index) => {
-                return (
-                  <div className="divContainerCalendar06 flexRow">
-                    <h3>{list.day}</h3>
-                    <h3>{list.month}</h3>
-                    <h3>{list.year}</h3>
-                    <div className="divContainerCalendar12">
-                      <button
-                        onClick={() => {
-                          let indexResult = index;
-                          setBookings(
-                            bookings.filter(
-                              (list, index) => index !== indexResult
-                            )
-                          );
-                        }}
-                      >
-                        Eliminar
-                      </button>
+                {bookings.map((list, index) => {
+                  return (
+                    <div className="divContainerCalendar06 flexRow">
+                      <h3>{list.day}</h3>
+                      <h3>{list.month}</h3>
+                      <h3>{list.year}</h3>
+                      <div className="divContainerCalendar12">
+                        <button
+                          onClick={() => {
+                            let indexResult = index;
+                            setBookings(
+                              bookings.filter(
+                                (list, index) => index !== indexResult
+                              )
+                            );
+                          }}
+                        >
+                          Eliminar
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}</div>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div className="divContainerCalendar02 flexColumn">
@@ -163,7 +208,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp00}
                       hookstyleComboBox="CHANGE_STATE_INPUT00"
                       arrayData={valueMonth[0]}
-                      classSelection ="divContainerCalendarCombobox00"
+                      classSelection="divContainerCalendarCombobox00"
                     />
                   </div>
                   <div>
@@ -174,7 +219,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp01}
                       hookstyleComboBox="CHANGE_STATE_INPUT01"
                       arrayData={valueYears}
-                      classSelection ="divContainerCalendarCombobox00"
+                      classSelection="divContainerCalendarCombobox00"
                     />
                   </div>
                 </div>
@@ -203,7 +248,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp03}
                       hookstyleComboBox="CHANGE_STATE_INPUT03"
                       arrayData={valueMonth[0]}
-                      classSelection ="divContainerCalendarCombobox02"
+                      classSelection="divContainerCalendarCombobox02"
                     />
                   </div>
                   <div className="flexColumn">
@@ -214,7 +259,7 @@ const Calendar = () => {
                       hookstyleComboBoxSelection={selector.stateInp04}
                       hookstyleComboBox="CHANGE_STATE_INPUT04"
                       arrayData={valueYears}
-                      classSelection ="divContainerCalendarCombobox02"
+                      classSelection="divContainerCalendarCombobox02"
                     />
                   </div>
                 </div>
@@ -264,9 +309,10 @@ const Calendar = () => {
               {stateDayMonth.map((listDayMonth, index) => {
                 let state = false;
                 let numDay = index + 1;
+                console.log(dayStartMonth);
                 bookings.map((listBookings) => {
                   if (
-                    numDay === listBookings.day &&
+                    listDayMonth === listBookings.day &&
                     selector.valueInput01 === listBookings.year &&
                     selector.valueInput00 === listBookings.month
                   ) {
@@ -277,25 +323,35 @@ const Calendar = () => {
                 return (
                   <h3
                     onClick={() => {
-                      dispatch({
-                        type: "CHANGE_INPUT02",
-                        payload: numDay,
-                      });
-                      dispatch({
-                        type: "CHANGE_INPUT03",
-                        payload: selector.valueInput00,
-                      });
 
-                      dispatch({
-                        type: "CHANGE_INPUT04",
-                        payload: selector.valueInput01,
-                      });
+if(numDay - dayStartMonth > 0){
+  dispatch({
+    type: "CHANGE_INPUT02",
+    payload: numDay - dayStartMonth,
+  });
+  dispatch({
+    type: "CHANGE_INPUT03",
+    payload: selector.valueInput00,
+  });
+
+  dispatch({
+    type: "CHANGE_INPUT04",
+    payload: selector.valueInput01,
+  });
+}
+
+             
                     }}
                     style={
-                      state ? { backgroundColor: " rgb(91, 146, 168)", color:"white" } : {}
+                      state
+                        ? {
+                            backgroundColor: " rgb(91, 146, 168)",
+                            color: "white",
+                          }
+                        : {}
                     }
                   >
-                    {numDay}
+                    {listDayMonth}
                   </h3>
                 );
               })}

@@ -227,17 +227,18 @@
 
 .divContainerCalendar03 {
   width: 35rem;
-  height: 25rem;
+  height: auto;
   padding: 0.5rem;
   display: grid;
   gap: 0.2rem;
   grid-template-columns: auto auto auto auto auto auto auto;
-  grid-template-rows: 4rem 4rem 4rem 4rem 4rem;
+  grid-template-rows: auto auto auto auto auto auto auto;
   border: solid 0.1rem rgb(82, 120, 146);
 }
 
 .divContainerCalendar03 > h3 {
   border: solid 0.1rem rgb(117, 115, 112);
+  padding: .5rem 0 .5rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
