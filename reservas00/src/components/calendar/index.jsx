@@ -35,11 +35,21 @@ const Calendar = () => {
     },
     {
       day: 2,
-      month: 1,
+      month: 2,
       year: 2023,
     },
     {
       day: 22,
+      month: 2,
+      year: 2023,
+    },
+    {
+      day: 17,
+      month: 2,
+      year: 2023,
+    },
+    {
+      day: 6,
       month: 2,
       year: 2023,
     },
@@ -117,28 +127,6 @@ const Calendar = () => {
       0
     ).getDate();
 
-    /*     dispatch({
-      type: "CHANGE_VALUEPOSITION00",
-      payload: new Date(
-        selector.valueInput01,
-        selector.valueInput00 - 1,
-        1
-      ).getDay(),
-    });
-   */
-
-    /*     if (selector.valuePosition00 === 0) {
-      dispatch({
-        type: "CHANGE_VALUEPOSITION00",
-        payload: 6,
-      });
-    } else {
-      dispatch({
-        type: "CHANGE_VALUEPOSITION00",
-        payload: selector.valuePosition00 -1,
-      });
-    }
- */
     let arrayFinal = [];
     let n = 0;
     let arrayDay = [];
@@ -309,6 +297,7 @@ const Calendar = () => {
               {stateDayMonth.map((listDayMonth, index) => {
                 let state = false;
                 let numDay = index + 1;
+                let styleDay = { backgroundColor: " rgb(91, 146, 168)" };
                 console.log(dayStartMonth);
                 bookings.map((listBookings) => {
                   if (
@@ -320,36 +309,33 @@ const Calendar = () => {
                   }
                 });
 
+                if (numDay - dayStartMonth < 1) {
+                  state = true;
+                  styleDay = { backgroundColor: "rgb(206, 203, 203)" };
+                }
+
                 return (
                   <h3
                     onClick={() => {
+                      console.log("es menor a 1");
 
-if(numDay - dayStartMonth > 0){
-  dispatch({
-    type: "CHANGE_INPUT02",
-    payload: numDay - dayStartMonth,
-  });
-  dispatch({
-    type: "CHANGE_INPUT03",
-    payload: selector.valueInput00,
-  });
+                      if (numDay - dayStartMonth > 0) {
+                        dispatch({
+                          type: "CHANGE_INPUT02",
+                          payload: numDay - dayStartMonth,
+                        });
+                        dispatch({
+                          type: "CHANGE_INPUT03",
+                          payload: selector.valueInput00,
+                        });
 
-  dispatch({
-    type: "CHANGE_INPUT04",
-    payload: selector.valueInput01,
-  });
-}
-
-             
+                        dispatch({
+                          type: "CHANGE_INPUT04",
+                          payload: selector.valueInput01,
+                        });
+                      }
                     }}
-                    style={
-                      state
-                        ? {
-                            backgroundColor: " rgb(91, 146, 168)",
-                            color: "white",
-                          }
-                        : {}
-                    }
+                    style={state ? styleDay : {}}
                   >
                     {listDayMonth}
                   </h3>
