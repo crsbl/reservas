@@ -243,6 +243,7 @@ const Calendar = () => {
                   <div className="flexColumn">
                     <h4>D</h4>
                     <input
+                    disabled
                       onChange={(e) => {
                         dispatch({
                           type: "CHANGE_INPUT02",
