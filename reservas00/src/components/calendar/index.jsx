@@ -76,6 +76,7 @@ const Calendar = () => {
     hookstyleComboBox,
     arrayData,
     classSelection,
+    hookstyleComboBoxChange,
   }) => {
     return (
       <div className={classSelection}>
@@ -84,6 +85,20 @@ const Calendar = () => {
             dispatch({
               type: hookstyleComboBox,
               payload: true,
+            });
+            console.log(hookstyleComboBoxChange);
+            dispatch({
+              type: hookstyleComboBoxChange[1],
+              payload: false,
+            });
+            dispatch({
+              type: hookstyleComboBoxChange[0],
+              payload: false,
+            });
+
+            dispatch({
+              type: hookstyleComboBoxChange[2],
+              payload: false,
             });
           }}
           type="text"
@@ -144,7 +159,7 @@ const Calendar = () => {
   return (
     <div className="divContainerCalendar00">
       <div className="divContainerCalendar01 flexColumn">
-        <h1>calendario Reservas en proceso</h1>
+        <h1>calendario Reservas</h1>
 
         <div className="flexRow divContainerCalendar11">
           <div className="divContainerCalendar04">
@@ -197,6 +212,11 @@ const Calendar = () => {
                       hookstyleComboBox="CHANGE_STATE_INPUT00"
                       arrayData={valueMonth[0]}
                       classSelection="divContainerCalendarCombobox00"
+                      hookstyleComboBoxChange={[
+                        "CHANGE_STATE_INPUT01",
+                        "CHANGE_STATE_INPUT03",
+                        "CHANGE_STATE_INPUT04",
+                      ]}
                     />
                   </div>
                   <div>
@@ -208,6 +228,11 @@ const Calendar = () => {
                       hookstyleComboBox="CHANGE_STATE_INPUT01"
                       arrayData={valueYears}
                       classSelection="divContainerCalendarCombobox00"
+                      hookstyleComboBoxChange={[
+                        "CHANGE_STATE_INPUT00",
+                        "CHANGE_STATE_INPUT03",
+                        "CHANGE_STATE_INPUT04",
+                      ]}
                     />
                   </div>
                 </div>
@@ -237,6 +262,11 @@ const Calendar = () => {
                       hookstyleComboBox="CHANGE_STATE_INPUT03"
                       arrayData={valueMonth[0]}
                       classSelection="divContainerCalendarCombobox02"
+                      hookstyleComboBoxChange={[
+                        "CHANGE_STATE_INPUT00",
+                        "CHANGE_STATE_INPUT01",
+                        "CHANGE_STATE_INPUT04",
+                      ]}
                     />
                   </div>
                   <div className="flexColumn">
@@ -248,6 +278,11 @@ const Calendar = () => {
                       hookstyleComboBox="CHANGE_STATE_INPUT04"
                       arrayData={valueYears}
                       classSelection="divContainerCalendarCombobox02"
+                      hookstyleComboBoxChange={[
+                        "CHANGE_STATE_INPUT00",
+                        "CHANGE_STATE_INPUT01",
+                        "CHANGE_STATE_INPUT03",
+                      ]}
                     />
                   </div>
                 </div>
@@ -332,6 +367,22 @@ const Calendar = () => {
                         dispatch({
                           type: "CHANGE_INPUT04",
                           payload: selector.valueInput01,
+                        });
+                        dispatch({
+                          type: "CHANGE_STATE_INPUT00",
+                          payload: false,
+                        });
+                        dispatch({
+                          type: "CHANGE_STATE_INPUT01",
+                          payload: false,
+                        });
+                        dispatch({
+                          type: "CHANGE_STATE_INPUT03",
+                          payload: false,
+                        });
+                        dispatch({
+                          type: "CHANGE_STATE_INPUT04",
+                          payload: false,
                         });
                       }
                     }}
