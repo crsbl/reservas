@@ -347,7 +347,8 @@
   padding: 0.5rem 0.5rem 1rem 0.5rem;
   overflow: scroll;
   max-height: 25rem;
-  align-items: center;
+  align-items:center;
+justify-content: end;
   border: solid 0.1rem rgb(54, 65, 88);
   gap: 0.5rem;
 }

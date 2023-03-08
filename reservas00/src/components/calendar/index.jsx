@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../style/calendar.css";
 import "../../style/calendarResponsive.css";
+import typeModalAlert from '../../state/modalAlert/type'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -187,6 +188,14 @@ const Calendar = () => {
                                 (list, index) => index !== indexResult
                               )
                             );
+                            dispatch({
+                              type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                              payload: {
+                                state: true,
+                                type: "danger",
+                                message: "Reserva eliminada",
+                              },
+                            });
                           }}
                         >
                           Eliminar
@@ -311,9 +320,23 @@ const Calendar = () => {
                           year: parseInt(selector.valueInput04),
                         },
                       ]);
-                      alert("reservado");
+                      dispatch({
+                        type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                        payload: {
+                          state: true,
+                          type: "accept",
+                          message: "Reservado",
+                        },
+                      });
                     } else {
-                      alert("reserva en uso");
+                      dispatch({
+                        type: typeModalAlert.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+                        payload: {
+                          state: true,
+                          type: "danger",
+                          message: "Reservada en uso",
+                        },
+                      });
                     }
                   }}
                 >
