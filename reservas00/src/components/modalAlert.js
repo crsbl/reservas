@@ -8,7 +8,6 @@ import typeState from "../state/modalAlert/type";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 const ModalAlert = ({ type, message, time }) => {
-    
   const dispatch = useDispatch();
   let SelectionType = null;
   const [stateOpacity, setStateOpacity] = useState(0);
@@ -30,8 +29,8 @@ const ModalAlert = ({ type, message, time }) => {
   }
   useEffect(() => {
     setStateOpacity(1);
-  });
-/*   let closeModalAlert = null
+  }, []);
+  /*   let closeModalAlert = null
    closeModalAlert = setTimeout(() => {
     dispatch({
       type: typeGlobal.CHANGE_GLOBAL_STATE_MODAL_ALERT,
@@ -51,11 +50,13 @@ const ModalAlert = ({ type, message, time }) => {
       </div>
       <button
         onClick={() => {
-    
+          setStateOpacity(0);
+          setTimeout(() => {
             dispatch({
-                type: typeState.CHANGE_GLOBAL_STATE_MODAL_ALERT,
-                payload: false,
-              });
+              type: typeState.CHANGE_GLOBAL_STATE_MODAL_ALERT,
+              payload: false,
+            });
+          }, 500);
         }}
       >
         Aceptar
